@@ -18,7 +18,7 @@ if (!empty($_SESSION['success_message'])): ?>
     </div>
 <?php endif; ?>
 
-    <form action="<?php echo BASE_URL; ?>/auth" method="POST">
+    <form action="<?php echo BASE_URL; ?>auth" method="POST">
         <input type="hidden" name="form_type" value="register">
         <input type="text" name="username" placeholder="Username" value=""><br>
         <input type="text" name="name" placeholder="Name" value=""><br>

@@ -368,3 +368,9 @@ has_column_wrap_fill50 : 左右25pxづつ埋める
 	width: 90%;
 	margin: 20px auto;
 }
+
+.l_main_ttl_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
