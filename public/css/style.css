@@ -1,0 +1,156 @@
+@charset "utf-8";
+/*
+ページごとの設定や、位置調整、テキスト装飾などで使用する汎用的なものとを記述します。
+Anything used for general purpose such as setting for every page, position adjustment, and text decoration will be written.
+
+接頭辞はUtilityの頭文字を取って【u_】とします。
+Prefix will take the "Utility" first letter and use it as "u_".
+
+clearfixのみ、例外的に接頭辞をつけてません。
+This not apply to "clearfix".
+
+フォントサイズはremで指定します。
+"rem" will be used for font-size.
+*/
+
+.u_mat0 { margin-top: 0; }
+.u_mat5 { margin-top: 5px; }
+.u_mat10 { margin-top: 10px; }
+.u_mat20 { margin-top: 20px; }
+.u_mat30 { margin-top: 30px; }
+.u_mat40 { margin-top: 40px; }
+.u_mat50 { margin-top: 50px; }
+
+.u_mab0 { margin-bottom: 0; }
+.u_mab5 { margin-bottom: 5px; }
+.u_mab10 { margin-bottom: 10px; }
+.u_mab15 { margin-bottom: 15px; }
+.u_mab20 { margin-bottom: 20px; }
+.u_mab25 { margin-bottom: 25px; }
+.u_mab30 { margin-bottom: 30px; }
+.u_mab40 { margin-bottom: 40px; }
+.u_mab50 { margin-bottom: 50px; }
+.u_mab60 { margin-bottom: 60px; }
+.u_mab100 { margin-bottom: 100px; }
+
+.u_mar10 { margin-right: 10px; }
+.u_mar20 { margin-right: 20px; }
+
+.u_ALcenter { text-align: center; }
+.u_ALright { text-align: right; }
+.u_ALleft { text-align: left; }
+.u_ALtop { vertical-align: top; }
+.u_ALmiddle { vertical-align: middle; }
+.u_ALbottom { vertical-align: bottom; }
+
+.u_float_left { float: left; }
+.u_float_right { float: right; }
+
+.u_red { color: #f00; }
+.u_black { color: #000; }
+.u_white { color: #fff; }
+.u_yellow { color: #f8e187; }
+
+.u_bold { font-weight: bold; }
+.u_underline { text-decoration: underline; }
+.u_strike { text-decoration: line-through; }
+.u_fw_normal { font-weight: normal; }
+
+.u_img_floatL { float: left; margin-right: 20px; }
+.u_img_floatR { float: right; margin-left: 20px; }
+
+.u_fs11 { font-size: 1.1rem; }
+.u_fs12 { font-size: 1.2rem; }
+.u_fs13 { font-size: 1.3rem; }
+.u_fs15 { font-size: 1.5rem; }
+.u_fs16 { font-size: 1.6rem; }
+.u_fs17 { font-size: 1.7rem; }
+.u_fs18 { font-size: 1.8rem; }
+.u_fs19 { font-size: 1.9rem; }
+.u_fs20 { font-size: 2rem; }
+.u_fs21 { font-size: 2.1rem; }
+.u_fs22 { font-size: 2.2rem; }
+.u_fs23 { font-size: 2.3rem; }
+.u_fs24 { font-size: 2.4rem; }
+
+.u_inline { display: inline; }
+.u_inlineblock { display: inline-block; }
+
+.u_disable { pointer-events: none; }
+
+.u_hover:hover { opacity: .7; }
+
+
+/*----------------------------------------------
+	.u_indent
+---------------------------------------------*/
+.u_indent01 {
+	text-indent: -1em;
+	padding-left: 1em;
+}
+.u_indent02 {
+	text-indent: -2em;
+	padding-left: 2em;
+}
+.u_indent03 {
+	text-indent: -3em;
+	padding-left: 3em;
+}
+
+/*----------------------------------------------
+	.u_flex
+---------------------------------------------*/
+.u_flex {
+	display: flex;
+}
+
+.u_flex.is_jc_end { 
+	justify-content: flex-end;
+}
+.u_flex.is_jc_center { 
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.u_flex.is_jc_center.no_wrap { 
+	justify-content: center;
+}
+.u_flex.is_jc_spBetween { 
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.u_flex.is_jc_spBetween.no_wrap {
+	justify-content: space-between;
+}
+.u_flex.is_jc_spAround { 
+	flex-wrap: wrap; 
+	justify-content: space-around;
+}
+.u_flex.is_jc_spEvenly { 
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+.u_flex.is_column {
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+.u_flex.is_ai_end { 
+	align-items: flex-end;
+}
+
+/*----------------------------------------------
+	.is_scroll
+---------------------------------------------*/
+.is_scroll {
+	width: 100%;
+	overflow-x: scroll;
+	white-space: nowrap;
+}
+
+/*----------------------------------------------
+	.clearfix
+---------------------------------------------*/
+.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+}

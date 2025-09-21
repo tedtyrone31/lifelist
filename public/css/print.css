@@ -1,0 +1,15 @@
+@charset "utf-8";
+/*
+印刷用の設定を記述します。
+This file is for print setting.
+*/
+
+@media print {
+
+body {
+	font-family: verdana,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"ＭＳ Ｐゴシック","MS PGothic",Sans-Serif;
+	width: 100%;
+	width: 640px\9;
+}
+.l_pagetop img { display: none; }
+}

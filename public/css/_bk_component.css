@@ -1,0 +1,789 @@
+@charset "utf-8";
+/*
+再利用可能な全てのオブジェクトを記述します。
+All objects that are reusable will be written.
+
+接頭辞はComponentの頭文字を取って【c_】とします。
+Prefix will take the "Component" first letter and use it as "c_".
+
+ここで指定するのは以下の様なものと予想されます。
+You might use the following.
+.c_btn/.c_breadclumb/.c_hero/.c_serch/.c_dropdown/
+.c_card/.c_feature/.c_overlay/.c_form/.c_thumbnail/.c_box
+
+モディファイヤを使用する場合は接頭辞【is_】をつけ、各コンポーネントの下に記述します。
+When using modifier put the prefix "is_" and write it under each component.
+
+フォントサイズはremで指定します。
+"rem" will be used for font-size.
+
+//sample
+.c_btn {
+	display: inline-block;
+	padding: 15px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+}
+.c_btn:hover { opacity: 0.8; }
+.c_btn.is_btn_disable { cursor: inherit; }
+.c_btn.is_btn_blue{
+	color: rgb(255, 255, 255);
+	background: rgb(1, 153, 224) none repeat scroll 0% 0%;
+}
+
+*/
+/*----------------------------------------------
+	.class name
+---------------------------------------------*/
+/*----------------------------------------------
+	.c_nav_type01
+---------------------------------------------*/
+.c_nav_type01 {
+  list-style: none;
+  background: #ddd;
+}
+
+.c_nav_type01 li:not(:last-of-type) a,
+.c_nav_type01 li:not(:last-of-type) span{
+  border-bottom: 1px solid #ccc;
+}
+.c_nav_type01 li a,
+.c_nav_type01 li span{
+  display: block;
+  padding: 13px 15px;
+  font-size: 1.5rem;
+  color: #000;
+  text-decoration: none;
+  text-align: left;
+  font-weight: bold;
+  position: relative;
+  line-height: 1.3;
+  /*background: url(../images/nav_arrow.png) 91% 50% no-repeat;*/
+}
+
+.c_nav_type01 li:hover a,
+.c_nav_type01 li.active a {
+  /*background: url(../images/nav_active_arrow.png) 91% 50% no-repeat, url(../images/nav_active.png);*/
+  color: #000;
+  background: #ccc;
+}
+.c_nav_type01 li.is_external a::after,
+.c_nav_type01 li.is_pdf a::after,
+.c_nav_type01 li.is_word a::after,
+.c_nav_type01 li.is_ppt a::after,
+.c_nav_type01 li.is_excel a::after {
+  content: " ";
+  display: inline-block;
+  width: 16px;
+  height: 18px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 15px;
+}
+.c_nav_type01 li.is_external a::after {
+  background: url(../images/icon_external_nav.png) no-repeat;
+}
+.c_nav_type01 li.is_external a:hover::after {
+  background: url(../images/icon_external_nav_o.png) no-repeat;
+}
+.c_nav_type01 li.is_pdf a::after {
+  background: url(../images/icon_pdf.png) no-repeat;
+}
+.c_nav_type01 li.is_word a::after {
+  background: url(../images/icon_word.png) no-repeat;
+}
+.c_nav_type01 li.is_ppt a::after {
+  background: url(../images/icon_powerpoint.png) no-repeat;
+}
+.c_nav_type01 li.is_excel a::after {
+  background: url(../images/icon_excel.png) no-repeat;
+}
+/*----------------------------------------------
+	.c_nav_type02
+---------------------------------------------*/
+.c_nav_type02 * {
+  list-style: none;
+}
+
+.c_nav_type02 li:not(:last-of-type) a,
+.c_nav_type02 li:not(:last-of-type) span{
+  border-bottom: 1px solid #ccc;
+}
+.c_nav_type02 li span,
+.c_nav_type02 li a {
+  padding-left: 18px;
+  display: block;
+  padding: 12px 10px;
+}
+.c_nav_type02 li a {
+  padding-left: 20px;
+}
+.c_nav_type02 > li {
+  display: block;
+  font-size: 1.5rem;
+  color: #000;
+  text-decoration: none;
+  text-align: left;
+  font-weight: bold;
+  position: relative;
+  line-height: 1.3;
+  /*background: url(../images/nav_arrow.png) 91% 50% no-repeat;*/
+}
+
+.c_nav_type02 > li ul > li:hover a,
+.c_nav_type02 > li ul > li.active a {
+  /*background: url(../images/nav_active_arrow.png) 91% 50% no-repeat, url(../images/nav_active.png);*/
+  color: #000;
+  background: #ccc;
+}
+.c_nav_type02 li.is_external a::after,
+.c_nav_type02 li.is_pdf a::after,
+.c_nav_type02 li.is_word a::after,
+.c_nav_type02 li.is_ppt a::after,
+.c_nav_type02 li.is_excel a::after {
+  content: " ";
+  display: inline-block;
+  width: 16px;
+  height: 18px;
+  vertical-align: middle;
+  position: relative;
+  margin-left: 10px;
+}
+.c_nav_type02 li.is_external a::after {
+  background: url(../images/icon_external_nav.png) no-repeat;
+  background-size: 100%;
+}
+.c_nav_type02 li.is_external a:hover::after {
+  background: url(../images/icon_external_nav_o.png) no-repeat;
+  background-size: 100%;
+}
+.c_nav_type02 li.is_pdf a::after {
+  background: url(../images/icon_pdf.png) no-repeat;
+  background-size: 100%;
+}
+.c_nav_type02 li.is_word a::after {
+  background: url(../images/icon_word.png) no-repeat;
+  background-size: 100%;
+}
+.c_nav_type02 li.is_ppt a::after {
+  background: url(../images/icon_powerpoint.png) no-repeat;
+  background-size: 100%;
+}
+.c_nav_type02 li.is_excel a::after {
+  background: url(../images/icon_excel.png) no-repeat;
+  background-size: 100%;
+}
+
+/*----------------------------------------------
+	.c_contact_type01
+---------------------------------------------*/
+.c_contact_type01 {
+	background: #ddd;
+  width: 100%;
+}
+
+.c_contact_type01 .c_contact_header {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 9px 0px 4px 12px;
+  border-bottom: 2px solid #ccc;
+}
+
+.c_contact_type01 .c_contact_details {
+  padding: 12px;
+  line-height: 1.5;
+}
+/*----------------------------------------------
+  .c_contact_type02
+---------------------------------------------*/
+.c_contact_type02{
+  background: #ddd;
+  border: 2px solid #aaa;
+}
+
+.c_contact_type02 .c_contact_header {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 9px 0px 4px 12px;
+  border-bottom: 2px solid #ccc;
+}
+
+.c_contact_type02 .c_contact_details {
+  padding: 12px;
+  line-height: 1.5;
+}
+
+/*----------------------------------------------
+  .c_contact_type03
+---------------------------------------------*/
+.c_contact_type03:first-child:after {
+  content: "";
+  background: #44160b;
+  width: 1px;
+  height: 123px;
+  position: absolute;
+  right: -1px;
+  top: 12px;
+}
+
+.c_contact_type03 {
+  padding:0 50px;
+  position: relative;
+}
+
+.c_contact_type03 .c_contact_header {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid #bbb;
+	display: inline-block;
+}
+
+.c_contact_type03 .c_contact_details {
+  padding: 15px;
+  line-height: 1.5;
+}
+
+/*----------------------------------------------
+  .c_contact_type04
+---------------------------------------------*/
+.c_contact_type04 {
+	background: #ccc;
+}
+
+.c_contact_type04 .c_contact_header {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid #bbb;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.c_contact_type04 .c_contact_details {
+  padding: 0;
+  line-height: 1.5;
+	display: inline-block;
+}
+
+/*----------------------------------------------
+  .c_contact_type05
+---------------------------------------------*/
+.c_contact_type05 {
+	background: #ccc;
+  width: 100%;
+}
+
+.c_contact_type05 .c_contact_header {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid #bbb;
+	display: block;
+	vertical-align: top;
+}
+
+.c_contact_type05 .c_contact_details {
+  padding: 0;
+  line-height: 1.5;
+	display: block;
+  padding: 20px;
+}
+
+/*----------------------------------------------
+  .c_news_type01
+---------------------------------------------*/
+.c_news_type01 {
+  max-height: 150px;
+  overflow-y: auto;
+  position: relative;
+  font-size: 1.5rem;
+  color: #000;
+  padding-top: 10px;
+}
+
+.c_news_type01 dt,
+.c_news_type01 dd {
+  padding-top: 9px;
+}
+
+.c_news_type01 dt {
+  float: left;
+  clear: left;
+  padding-left: 20px;
+  font-size: 1.5rem;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+.c_news_type01 dd {
+  padding-left: 132px;
+  word-wrap: break-word;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+.c_news_type01 dt:not(:first-of-type) {
+  margin-top: 2px;
+}
+.c_news_type01 dd:not(:first-of-type) {
+  border-top: 2px dotted #aaaaaa;
+}
+
+/*----------------------------------------------
+  	.c_news_type02
+  ---------------------------------------------*/
+.c_news_type02 {
+  max-height: 148px;
+  overflow-y: auto;
+  position: relative;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.c_news_type02 dt {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+  padding: 15px 10px 0;
+}
+
+.c_news_type02 dd {
+  padding: 5px 10px;
+  word-wrap: break-word;
+}
+.c_news_type02 dt:not(:first-of-type) {
+  border-top: 2px dotted #aaaaaa;
+}
+/*----------------------------------------------
+  	.c_ttl_type01
+  ---------------------------------------------*/
+.c_ttl_type01 {
+  font-size: 3.2rem;
+  font-weight: bold;
+  background: #ccc;
+  color: #000;
+  padding: 15px 20px;
+}
+/*----------------------------------------------
+    .c_ttl_type02
+---------------------------------------------*/
+.c_ttl_type02 {
+  padding: 5px 10px;
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #000;
+  text-indent: 5px;
+  background: #ccc;
+}
+/*----------------------------------------------
+    .c_ttl_type03
+---------------------------------------------*/
+.c_ttl_type03 {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #000;
+  padding: 0 15px;
+  position: relative;
+  border-bottom: 1px solid #000;
+}
+
+.c_ttl_type03:before {
+  content: "";
+  height: 6px;
+  width: 11px;
+  position: absolute;
+  background: #aaa;
+  background-size: contain;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+}
+/*----------------------------------------------
+    .c_ttl_type04
+---------------------------------------------*/
+.c_ttl_type04 {
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: #000;
+  position: relative;
+  z-index: 1;
+}
+
+/*.c_ttl_type04:before {
+  content: "";
+  height: 4px;
+  width: 100%;
+  position: absolute;
+  background: #d3d3d3;
+  background-size: contain;
+  display: inline;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  z-index: -1;
+}*/
+
+/*----------------------------------------------
+  	.c_para_type01
+---------------------------------------------*/
+.c_para_type01 {
+  text-align: justify;
+  -ms-text-justify: inter-ideograph;
+  text-justify: inter-ideograph;
+}
+
+/*----------------------------------------------
+  	.c_para_type02
+---------------------------------------------*/
+.c_para_type02 {
+  text-indent: 1em;
+  text-align: justify;
+  -ms-text-justify: inter-ideograph;
+  text-justify: inter-ideograph;
+}
+
+/*----------------------------------------------
+  	.c_kome_type01
+---------------------------------------------*/
+.c_kome_type01 {
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
+/*----------------------------------------------
+	.c_table_type01
+---------------------------------------------*/
+.c_table_type01 {
+  width: 100%;
+}
+
+.c_table_type01 th {
+  text-align: left;
+  vertical-align: top;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #FFF;
+  background: #0166b2;
+}
+
+.c_table_type01 th,
+.c_table_type01 td {
+  padding: 10px 20px;
+  border: 1px solid #d8e3f0;
+}
+
+/*----------------------------------------------
+	.c_table_type02
+---------------------------------------------*/
+.c_table_type02 {
+  width: 100%;
+}
+
+.c_table_type02 thead tr {
+  border-top: 1px solid #418ac5;
+  border-bottom: 1px solid #d8e3f0;
+}
+
+.c_table_type02 tbody tr:not(:last-child) {
+  border-bottom: 2px dotted #e5e5e5;
+}
+
+.c_table_type02 thead th {
+  vertical-align: top;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #418ac5;
+}
+
+.c_table_type02 th,
+.c_table_type02 td {
+  padding: 7px 0;
+  text-align: center;
+}
+
+/*----------------------------------------------
+	.c_table_type03
+---------------------------------------------*/
+.c_table_type03 {
+  width: 100%;
+}
+
+.c_table_type03 thead th {
+  color: #FFF;
+  white-space: nowrap;
+  font-weight: bold;
+  background: #feaf05;
+  background: -moz-linear-gradient(top,  #feaf05 0%, #fd9a23 99%);
+  background: -webkit-linear-gradient(top,  #feaf05 0%,#fd9a23 99%);
+  background: linear-gradient(to bottom,  #feaf05 0%,#fd9a23 99%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feaf05', endColorstr='#fd9a23',GradientType=0 );
+}
+
+.c_table_type03 tbody td {
+  vertical-align: top;
+  background: #fff4e5;
+}
+
+.c_table_type03 th,
+.c_table_type03 td {
+  text-align: center;
+  font-weight: normal;
+  padding: 5px;
+  border: 1px solid #FFF;
+}
+
+/*----------------------------------------------
+	.c_table_type04
+---------------------------------------------*/
+.c_table_type04 tr > * {
+  vertical-align: top;
+  border: 1px solid #333;
+}
+
+/* FOR COLORED LIST TYPE */
+/*----------------------------------------------
+	.c_list_type01
+---------------------------------------------*/
+.c_list_type01 {
+  vertical-align: top;
+}
+
+.c_list_type01 li {
+  list-style: none;
+  position: relative;
+  font-size: 1.6rem;
+}
+.c_list_type01 li:before {
+  color: #ffd14e;
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  vertical-align: middle;
+  top: -4px;
+  right: 2px;
+  text-indent: 0;
+  font-size: 1.5rem;
+}
+
+.c_list_type01.is_arrow li:before {
+  content: "";
+  width: 15px;
+  height: 7px;
+  background: url(../images/list_arrow.png) no-repeat;
+}
+.c_list_type01.is_square li:before {
+  content: "■";
+}
+
+.c_list_type01.is_disc li:before {
+  content: "●";
+}
+
+.c_list_type01.is_triangle li:before {
+  content: "▶";
+}
+
+.c_list_type01.is_diamond li:before {
+  content: "◆";
+}
+
+.c_list_type01.is_decimal {
+  counter-reset: is_decimal_counter;
+}
+
+.c_list_type01.is_decimal li:before {
+  counter-increment: is_decimal_counter;
+  content: counter(is_decimal_counter) ".";
+  font-weight: bold;
+  text-align: right;
+  width: 20px;
+  margin-right: 5px;
+  color: #418ac5;
+  vertical-align: unset;
+  top: -1px;
+}
+
+.c_list_type01.is_triangle li,
+.c_list_type01.is_diamond li,
+.c_list_type01.is_square li,
+.c_list_type01.is_disc li,
+.c_list_type01.is_triangle li,
+.c_list_type01.is_diamond li {
+  text-indent: -10px;
+  padding-left: 15px;
+}
+.c_list_type01.is_decimal li {
+  text-indent: -26px;
+  padding-left: 26px;
+}
+
+
+/* FOR SIMPLE LIST TYPE */
+/*----------------------------------------------
+	.c_list_type02
+---------------------------------------------*/
+.c_list_type02 {
+  text-align: justify;
+  -ms-text-justify: inter-ideograph;
+  text-justify: inter-ideograph;
+  padding-left: 20px;
+}
+
+.c_list_type02 li {
+  margin-bottom: 5px;
+}
+
+.c_list_type02.is_disc li {
+  list-style: disc;
+}
+
+.c_list_type02.is_decimal li{
+  list-style: decimal;
+}
+/*----------------------------------------------
+	.c_btn
+---------------------------------------------*/
+.c_btn {
+  display: inline-block;
+  padding: 12px 20px 11px;
+  min-width: 240px;
+  text-decoration: none!important;
+  color: #fff!important;
+  position: relative;
+  background: #ffb400;
+  box-shadow: 0 5px 0 0 #ef9e01;
+  border-radius: 25px;
+}
+a.c_btn:hover {
+  background: #fd9628;
+  box-shadow: 0 5px 0 0 #e38414;
+}
+
+span.c_btn {
+  background: #ccd6e2;
+  box-shadow: 0 5px 0 0 #bac3ce;
+}
+.c_btn.is_w250 { width: 250px; }
+.c_btn.is_w320 { width: 320px; }
+.c_btn.is_w400 { width: 400px; }
+
+.c_btn.is_word,
+.c_btn.is_excel,
+.c_btn.is_ppt,
+.c_btn.is_pdf {
+  background: #006bb5;
+  box-shadow: 0 5px 0 0 #014a88;
+}
+
+.c_btn.is_word::before,
+.c_btn.is_excel::before,
+.c_btn.is_ppt::before,
+.c_btn.is_pdf::before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  margin: auto 0;
+  vertical-align: middle;
+  right: 10px;
+}
+.c_btn.is_word::before {
+  background: url(../images/icon_btn_word.png) no-repeat;
+  background-size: 100%;
+}
+.c_btn.is_excel::before {
+  background: url(../images/icon_btn_excel.png) no-repeat;
+  background-size: 100%;
+}
+.c_btn.is_ppt::before {
+  background: url(../images/icon_btn_powerpoint.png) no-repeat;
+  background-size: 100%;
+}
+.c_btn.is_pdf::before {
+  background: url(../images/icon_btn_pdf.png) no-repeat;
+  background-size: 100%;
+  width: 16px;
+  height: 20px;
+}
+
+/*----------------------------------------------
+	.c_box_type01
+---------------------------------------------*/
+.c_box_type01 {
+  padding: 15px;
+  background: #e1f5ff;
+  border: 1px solid #418ac5;
+}
+.c_box_type01_header {
+  font-weight: bold;
+  color: #0166b2;
+  font-size: 1.6rem;
+}
+
+/*----------------------------------------------
+	.c_box_type02
+---------------------------------------------*/
+.c_box_type02 {
+  padding: 15px;
+  background: #fff4e5;
+  border: 1px solid #fe9b21;
+}
+
+.c_box_type02_header {
+  font-weight: bold;
+  color: #fe9b21;
+  font-size: 1.6rem;
+}
+
+/*----------------------------------------------
+	.c_box_type03
+---------------------------------------------*/
+.c_box_type03 {
+  padding: 15px;
+  border: 1px solid #ee2b29;
+  color: #ee2b29;
+}
+
+/*----------------------------------------------
+.c_anchor_icon
+---------------------------------------------*/
+a.c_anchor_icon{
+  display: inline-block;
+  padding-right: 20px;
+}
+
+a[href^="http://"].c_anchor_icon,
+a[href^="https://"].c_anchor_icon {
+  background: url(../images/icon_external.png) no-repeat right center;
+}
+
+a[href$=".xls"].c_anchor_icon,
+a[href$=".xlsx"].c_anchor_icon {
+  background: url(../images/icon_excel.png) no-repeat right center;
+}
+
+a[href$=".doc"].c_anchor_icon,
+a[href$=".docx"].c_anchor_icon {
+  background: url(../images/icon_word.png) no-repeat right center;
+}
+
+a[href$=".ppt"].c_anchor_icon,
+a[href$=".pptx"].c_anchor_icon {
+  background: url(../images/icon_powerpoint.png) no-repeat right center;
+}
+
+a[href$=".pdf"].c_anchor_icon {
+  background: url(../images/icon_pdf.png) no-repeat right center;
+}

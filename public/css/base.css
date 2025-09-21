@@ -1,0 +1,81 @@
+@charset "utf-8";
+/*
+htmlやbody、a要素など、タグに直接設定するものを記述します。
+Things that will be set directly and tags such as HTML, body and a element will be written.
+
+このカテゴリーのみ、接頭辞から始まりません。
+Only this category will not begin with the prefix.
+
+フォントサイズはremで指定します。
+Font size will be set as "rem".
+
+↓↓↓↓↓↓コメントアウト表記サンプル Comment out sample ↓↓↓↓↓↓
+*/
+/*----------------------------------------------
+	大くくりコメントアウト large part
+---------------------------------------------*/
+
+/*  中くくりコメントアウト middle part
+------------------------------------- */
+
+/* 小くくりコメントアウト small part */
+/*
+↑↑↑↑↑↑コメントアウト表記サンプル Comment out sample ↑↑↑↑↑↑
+
+*/
+/*----------------------------------------------
+	html
+---------------------------------------------*/
+html { font-size: 62.5%; }
+/*↑ 10pxが1remとなる様に調整*/
+
+/*----------------------------------------------
+	body
+---------------------------------------------*/
+body {
+  min-width: 1000px;
+  font-size: 16px;
+  font-size: 1.6rem;/*↑ remをサポートしていないブラウザ向けにpxでも指定　Set as "px" for browsers that don't support "rem"*/
+  /*↓使用時のみコメントアウト外す Remove comment out only during use.*/
+  font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', arial, helvetica, sans-serif;/*スタンダードゴシック（Standard sans-serif）
+  /*font-family: Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;*/ /*モダンゴシック（Modern sans-serif）*/
+  /* font-family: "Times New Roman", "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;*/
+	/* ↓游ゴシックYuGothicを使用する場合はfont-weightを指定する */
+	/*font-weight: 500;*/
+  color: #333;
+  line-height: 1.5;
+}
+
+/*----------------------------------------------
+	a
+---------------------------------------------*/
+a { color: #000; }
+a:hover,
+a:active,
+a:focus { color: #ffa500; }
+
+/*----------------------------------------------
+	table
+---------------------------------------------*/
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*----------------------------------------------
+	h1,h2,h3,h4,h5,h6
+---------------------------------------------*/
+h1,h2,h3,h4,h5,h6{ margin: 0; }
+
+/*----------------------------------------------
+	img
+---------------------------------------------*/
+img { vertical-align: bottom; }
+
+/*----------------------------------------------
+	*
+---------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
