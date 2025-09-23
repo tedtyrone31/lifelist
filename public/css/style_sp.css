@@ -441,5 +441,17 @@ miscellaneous
 		left: 0%;
 	}
 
+	.l_side_contents {
+		width: unset;
+	}
 
+	.l_main_ttl_container {
+		justify-content: flex-start;
+		gap: 0.5em;
+	}
+
+	.c_main_content_count {
+		font-size: 1.4em;
+		padding: 0.1em 1em;
+	}
 }

@@ -154,3 +154,7 @@ This not apply to "clearfix".
     display: block;
     clear: both;
 }
+
+.u_wd100 {
+	width: 100%;
+}

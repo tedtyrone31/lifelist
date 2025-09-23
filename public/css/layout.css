@@ -374,3 +374,12 @@ has_column_wrap_fill50 : 左右25pxづつ埋める
   justify-content: space-between;
   align-items: center;
 }
+
+.l_main_content_container {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: center;
+    padding: 20px;
+    color: #fff;
+
+}

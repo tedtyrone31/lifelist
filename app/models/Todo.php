@@ -7,6 +7,8 @@ class Todo extends Model{
     public $todoTitle;
     public $tag;
     public $created_at;
+    public $status;
+    public $alarm_status;
 
     // Save new todo on object state
     public function save() {
@@ -30,7 +32,7 @@ class Todo extends Model{
 
         $id = (int) $todo_id; // sanitize
 
-        $sql = "SELECT * FROM todos WHERE id = {$id} LIMIT 1";
+        $sql = "SELECT * FROM todos WHERE todo_id = {$todo_id} LIMIT 1";
         $result = $db->query($sql);
 
         if ($result && $row = $result->fetch_assoc()) {
@@ -40,6 +42,8 @@ class Todo extends Model{
             $todo->todoTitle      = $row['todo_title'];
             $todo->tag        = $row['tag'];
             $todo->created_at = $row['created_at'];
+            $todo->status = $row['status'];
+            $todo->alarm_status = $row['alarm_status'];
             return $todo;
         }
 
@@ -68,6 +72,19 @@ class Todo extends Model{
         }
 
         return $todos; // returns array (possibly empty)
+    }
+
+    // Static method: delete a todo by ID
+    public static function deleteById($todo_id, $user_id) {
+        $db = (new self())->db->conn;
+
+        // It's safer to include user_id in the WHERE clause 
+        // so a user cannot delete someone else's todo
+        $sql = "DELETE FROM todos WHERE todo_id = {$todo_id} AND user_id = {$user_id} LIMIT 1";
+
+        $result = $db->query($sql);
+
+        return $result ? true : false; // return boolean
     }
 }
 

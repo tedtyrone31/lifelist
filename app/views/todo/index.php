@@ -21,6 +21,6 @@
         ?>
 
         <!-- Modal -->
-        <?php 
-        // if (!empty($taskInModal)) include "modals/todoModal.php"; 
-        ?>
+        <?php if (!empty($specificTodo)) : ?>
+            <?php include "modals/todoModal.php"; ?>
+        <?php endif; ?>

@@ -4,7 +4,8 @@ $messages = [
     'deleteMessage' => 'success',
     'errorEmptyMessage' => 'error',
     'todoUpdateMessage' => 'success',
-    'statusUpdateMessage' => 'success'
+    'statusUpdateMessage' => 'success',
+    'errorMessage' => 'success'
 ];
 
 foreach ($messages as $key => $type):
