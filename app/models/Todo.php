@@ -13,6 +13,8 @@ class Todo extends Model{
     public $alarmSound;
     public $created_at;
     public $status;
+    const STATUS_PENDING   = 'pending';
+    const STATUS_COMPLETED = 'completed';
 
     // Save new todo on object state
     public function save() {
@@ -30,7 +32,7 @@ class Todo extends Model{
         return false; // failed
     }
 
-        // UPDATE METHOD
+    // UPDATE TODO INFO
     public function updateTodo($todoId) {
         $title         = $this->db->conn->real_escape_string($this->todoTitle);
         $tag           = $this->db->conn->real_escape_string($this->tag);
@@ -58,6 +60,34 @@ class Todo extends Model{
         }
         return false; // failed
     }
+
+    // UPDATE Todo status
+    public function toggleTodoStatus($todoId, $userId) {
+        // Get current status
+        $sql = "SELECT status FROM todos 
+                WHERE todo_id = '{$todoId}' 
+                AND user_id = '{$userId}' 
+                LIMIT 1";
+        $result = $this->db->conn->query($sql);
+
+        if ($result && $row = $result->fetch_assoc()) {
+            $newStatus = ($row['status'] === 'completed') ? 'pending' : 'completed';
+
+            $updateSql = "UPDATE todos 
+                        SET status = '{$newStatus}', 
+                            updated_at = NOW()
+                        WHERE todo_id = '{$todoId}' 
+                            AND user_id = '{$this->userId}' 
+                        LIMIT 1";
+
+            if ($this->db->conn->query($updateSql)) {
+                return $newStatus; // ✅ return new status instead of boolean
+            }
+        }
+
+        return false; // failed
+    }
+
 
 
     // Static finder method
@@ -89,27 +119,57 @@ class Todo extends Model{
     }
 
     // Static finder method: get all todos
-    public static function getAllByUser($user_id) {
-        $db = (new self())->db->conn; // create instance just to access db
+    public static function getAllTodoByUserAndStatus($userId, $status, $tags=[]) {
+        $db = (new self())->db->conn; 
+        $userId = (int) $userId;
+        $status = $db->real_escape_string($status);
 
-        $sql = "SELECT * FROM todos WHERE user_id = {$user_id} ORDER BY created_at DESC";
+
+        $sql = "SELECT * FROM todos WHERE user_id = {$userId} AND status = '{$status}'";
+
+        // Apply tag filter if selected
+        if (!empty($tags)) {
+            $tagList = implode("','", array_map([$db, 'real_escape_string'], $tags));
+            $sql .= " AND tag IN ('{$tagList}')";
+        }
+
+        $sql .= " ORDER BY updated_at DESC";
+
         $result = $db->query($sql);
-
         $todos = [];
 
         if ($result) {
             while ($row = $result->fetch_assoc()) {
                 $todo = new self();
-                $todo->todoId = $row['todo_id'];
-                $todo->userId = $row['user_id'];
+                $todo->todoId   = $row['todo_id'];
+                $todo->userId   = $row['user_id'];
                 $todo->todoTitle = $row['todo_title'];
-                $todo->tag        = $row['tag'];
+                $todo->tag       = $row['tag'];
+                $todo->status    = $row['status'];
                 $todo->created_at = $row['created_at'];
                 $todos[] = $todo;
             }
         }
 
-        return $todos; // returns array (possibly empty)
+        return $todos;
+    }
+
+     // Count todos by status, optionally filtered by tags
+    public static function countTodosByStatus($userId, $status, $tags = []) {
+        $db = (new self())->db->conn;
+        $userId = (int)$userId;
+        $status = $db->real_escape_string($status);
+
+        $sql = "SELECT COUNT(*) AS total FROM todos WHERE user_id = {$userId} AND status = '{$status}'";
+
+        if (!empty($tags)) {
+            $tagList = implode("','", array_map([$db, 'real_escape_string'], $tags));
+            $sql .= " AND tag IN ('{$tagList}')";
+        }
+
+        $result = $db->query($sql);
+        $row = $result->fetch_assoc();
+        return (int)$row['total'];
     }
 
     // Static method: delete a todo by ID

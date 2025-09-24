@@ -1,29 +1,45 @@
 <?php
 class TodoController extends Controller{
 
- protected $userModel;
+ protected $todoModel;
 
      public function __construct() {
         // Check if user is logged in before any method
         $this->requireLogin();
-        $this->userModel = $this->model('Todo');
+        $this->todoModel = $this->model('Todo');
     }
 
-    // default method
-   public function index($todo_id = null) {
-    $user_id = $_SESSION['user_id'];
-    $todos   = Todo::getAllByUser($user_id);
+  // default method
+  public function index($todo_id = null, $completeStatus = null) {
+    $userId = $_SESSION['user_id'];
 
-    $specificTodo = null;
-    if ($todo_id) {
-        $specificTodo = Todo::find($todo_id); //Find specific todo (Open a modal)
-    }
+    // Get selected tags from GET
+    $selectedTags = isset($_GET['tags']) ? $_GET['tags'] : [];
+
+    // Fetch todos
+    $todosPending   = Todo::getAllTodoByUserAndStatus($userId, Todo::STATUS_PENDING, $selectedTags);
+    $todosCompleted = Todo::getAllTodoByUserAndStatus($userId, Todo::STATUS_COMPLETED);
+
+     // Fetch counts
+        $pendingCount   = Todo::countTodosByStatus($userId, Todo::STATUS_PENDING, $selectedTags);
+        $completedCount = Todo::countTodosByStatus($userId, Todo::STATUS_COMPLETED);
+
+    // Get a specific todo if requested
+    $specificTodo = $todo_id ? Todo::find($todo_id) : null;
+
+    // Complete status flag
+    $completeStatus = $completeStatus ? true : false;
 
     $data = [
-        'title'        => 'To-Do',
-        'activeMenu'   => 'todo',
-        'todos'        => $todos,
-        'specificTodo' => $specificTodo
+        'title'            => 'To-Do',
+        'activeMenu'       => 'todo',
+        'todosPending'     => $todosPending,
+        'todosCompleted'   => $todosCompleted,
+        'specificTodo'     => $specificTodo,
+        'completeStatus'   => $completeStatus,
+        'selectedTags'     => $selectedTags,
+        'pendingCount'     => $pendingCount,
+        'completedCount'     => $completedCount,
     ];
 
     $this->view('todo/index', $data, 'main');
@@ -59,7 +75,7 @@ class TodoController extends Controller{
         exit;
     }
 
-     // Add a new todo
+    // Update todo info
     public function updateTodo($id) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $todoTitle = trim($_POST['todo_title'] ?? '');
@@ -89,8 +105,24 @@ class TodoController extends Controller{
             }
         }
 
-        echo  $_SESSION['user_id'];
-        echo $id;
+        // Redirect to index so updated list shows
+        header("Location: " . BASE_URL . "todo/index");
+        exit;
+    }
+
+     //  update todo status
+    public function updateTodoStatus($todoId) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+           
+        $todo = new Todo();
+        $userId = $todo->userId = $_SESSION['user_id'];
+        $todoStatus = $todo->toggleTodoStatus($todoId,$userId);
+                if ($todoStatus === false) {
+                    $_SESSION['errorMessage'] = "Failed to update todo status.";
+                } else {
+                    $_SESSION['updateTodoStatusMessage'] = "Todo marked as {$todoStatus}!";
+                }
+        }
 
         // Redirect to index so updated list shows
         header("Location: " . BASE_URL . "todo/index");

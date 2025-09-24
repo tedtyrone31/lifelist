@@ -5,6 +5,7 @@ $messages = [
     'errorEmptyMessage' => 'error',
     'todoUpdateMessage' => 'success',
     'statusUpdateMessage' => 'success',
+    'updateTodoStatusMessage' => 'success',
     'errorMessage' => 'success'
 ];
 

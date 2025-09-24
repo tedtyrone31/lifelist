@@ -800,16 +800,30 @@ a[href$=".pdf"].c_anchor_icon {
     background-color: #ccc;
     /* cursor: pointer; */
     /* font-size: clamp(0.8rem, 1.5vw, 1.2rem); */
-    font-size: 0.8em;
+    font-size: 0.85em;
+}
+
+.c_tag input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: #025043; /* changes checkmark color */
 }
 
 .tag-box.default {
     background-color: #607D8B;
 }
-
-
 .c_tag.pending {
   background-color: #FFC107;
+}
+
+.c_edit_ttl {
+  color: #0166b2;
+}
+
+.modal-content .c_tag{
+  font-size: 1.2rem;
+  width: 30%;
+  text-align: center;
+  border-radius: 5px;
 }
 
 .c_tag.completed {
@@ -869,8 +883,8 @@ a[href$=".pdf"].c_anchor_icon {
   border: none;
   font-weight:lighter;
   letter-spacing: 2px;
-  height: 25px;
-  margin-left: 10px;
+  /* height: 25px; */
+  /* margin-left: 10px; */
 }
 
 /* individual colors for your categories */
@@ -1125,7 +1139,8 @@ a[href$=".pdf"].c_anchor_icon {
     background: #1E201E;
     padding: 30px;
     border-radius: 10px;
-    min-width: 500px;
+    /* min-width: 500px; */
+    min-width: 15%;
     max-width: 400px;
     position: relative;
     border: 1px solid #fff;
@@ -1204,4 +1219,128 @@ select option {
 .close a {
     color: #fff;
     text-decoration: none;
+}
+
+.nav-tag-box.tag-box {
+  /* display: inline-block; */
+  position: absolute;
+  margin-right: 6px;    /* spacing between box and text */
+  width: 0.1%;
+  top: 42%;
+  left: 3%;
+  padding: 5px;
+  border-radius: 0;
+
+}
+
+.c-completed-title-link {
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px!important;
+}
+
+.status-completed {
+    color: #28a745;
+    margin-left: 15px;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    /* text-align: center; */
+}
+
+.status-pending {
+    color: #FFA500!important;
+    margin-left: 15px;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    /* text-align: center; */
+}
+.modal-content h2 {
+  /* color: #2196F3; */
+}
+
+.c_todo_undo {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #FFA500;
+    width: 100%;
+    margin-top: -15px;
+    cursor: pointer;
+}
+
+.completed-scroll {
+  max-height: 450px;   /* adjust */
+  overflow-y: auto;    /* vertical scroll */
+}
+
+
+/* Completed list scrollbar */
+.completed-scroll::-webkit-scrollbar {
+    width: 5px; /* thin scrollbar */
+}
+
+/* Remove arrows */
+.completed-scroll::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Track */
+.completed-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Thumb */
+.completed-scroll::-webkit-scrollbar-thumb {
+    background: #2196F3; /* blue */
+    border-radius: 5px;
+}
+
+/* Hover effect */
+.completed-scroll::-webkit-scrollbar-thumb:hover {
+    background: #0f60a3; /* darker blue */
+}
+
+.c_save_changes_btn.complete-status {
+    background-color: #d6d6d6;
+    color: #888888;
+    cursor: not-allowed;
+    opacity: 0.7;
+    pointer-events: none;
+    border: 1px solid #bfbfbf;
+}
+.c_save_changes_btn {
+    background-color: #4CAF50;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    color: #1E201E;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.c_modal_delete_btn {
+  width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #A84033;
+}
+
+.c_completed_count {
+  background-color: #2196F3;
+  padding: 2px 8px;
+  color: #fff;
 }

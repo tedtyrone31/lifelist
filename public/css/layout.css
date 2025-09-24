@@ -382,3 +382,14 @@ has_column_wrap_fill50 : 左右25pxづつ埋める
     padding: 20px;
     color: #fff;
 }
+
+.l_filter_form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 15px;   
+}
+
+.l_filter_form .c_tag {
+	margin-right: unset!important;
+	/* width: 110px; */
+}

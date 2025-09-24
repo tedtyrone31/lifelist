@@ -1,6 +1,6 @@
 
 <?php
-$completeStatus = false;
+// $completeStatus = false;
 if (!empty($specificTodo)): 
     echo $specificTodo->tag;
     echo $specificTodo->todoDescription;
@@ -12,15 +12,16 @@ if (!empty($specificTodo)):
                 <a href="<?= BASE_URL ?>todo"> &times;</a>
             </span>
             <h2>
-                Edit To-Do
-                &nbsp;&nbsp;&nbsp;
+                 <?php if (!$completeStatus): ?>
+                <span class="c_edit_ttl">Edit To-Do</span>
+                <br>
+                <?php endif; ?>
                 <span class="c_tag <?= $specificTodo->tag; ?>">
                     <?= ucfirst($specificTodo->tag); ?>
                 </span>
-                &nbsp;
                 <span class="c_tag <?= $specificTodo->status; ?>">
                     <?= ucfirst($specificTodo->status); ?>
-                </span>
+                </span><br>
             </h2>
             
             <form id="editForm" method="POST" action="<?= BASE_URL; ?>todo/updateTodo/<?= $specificTodo->todoId;  ?>">
@@ -56,7 +57,7 @@ if (!empty($specificTodo)):
                 <br>
                 <div>
                     <label for="">Due Date:</label>
-                    <input name="due_date" type="date" style="width: 28%;" 
+                    <input name="due_date" type="date" style="width: 37%;" 
                            value="<?= $specificTodo->dueDate; ?>" 
                            <?= $completeStatus ? "disabled" : "" ?>>
                 </div>
@@ -64,7 +65,7 @@ if (!empty($specificTodo)):
                 <br>
                 <div>
                     <label for="">Time:</label>
-                    <input name="due_time" type="time" style="width: 24%;" 
+                    <input name="due_time" type="time" style="width: 30%;" 
                            value="<?= $specificTodo->dueTime ?? ''; ?>" 
                            <?= $completeStatus ? "disabled" : "" ?>>
                 </div>
@@ -93,7 +94,19 @@ if (!empty($specificTodo)):
                         <?= $completeStatus ? "disabled" : "" ?>>
                     Save changes
                 </button>
-            </form>
+             </form>
+                <!-- Delete -->
+                 <?php if ($completeStatus): ?>
+                    <br>
+                    <form action="<?= BASE_URL ?>todo/updateTodoStatus/<?= $specificTodo->todoId; ?>" method="post" style="display:inline;">
+                        <button  style="margin-bottom:10px;"type="submit" name="undo" class="c_todo_undo">Mark as Pending</button>
+                    </form>
+                    <br>
+                <form method="POST" action="<?= BASE_URL; ?>todo/deleteTodo/<?= $specificTodo->todoId; ?>" style="display:inline;">
+                    <input type="hidden" name="todo_id" value="<?= $specificTodo->todoId; ?>">
+                    <button type="submit" class="c_modal_delete_btn">Delete</button>
+                </form>
+                <?php endif; ?>
         </div>
     </div>
 <?php endif; ?>

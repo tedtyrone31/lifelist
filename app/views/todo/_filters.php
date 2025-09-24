@@ -1,18 +1,16 @@
-<div class="c_list_main_container u_mat20">
-    <form method="get" action="">
-        <input type="hidden" name="page" value="todo">
-        <div class="c_list_main_container u_mat30">
-            <?php
-            $tags = ["default", "personal", "work", "school"];
-            foreach ($tags as $tag): ?>
-                <div class="c_tag <?= $tag ?>">
-                    <input type="checkbox" name="tags[]" value="<?= $tag ?>"
-                        <?= isset($_GET['tags']) && in_array($tag, $_GET['tags']) ? 'checked' : '' ?>>
-                    <span><?= ucfirst($tag) ?></span>
-                </div>
-            <?php endforeach; ?>
+<br>
+<form class="l_filter_form" method="get" action="<?= BASE_URL ?>index.php">
+    <input type="hidden" name="url" value="todo/index">
 
-            <button type="submit" class="c_filter_tags">Filter</button>
+    <?php
+    $tags = ["default", "personal", "work", "school"];
+    foreach ($tags as $tag): ?>
+        <div class="c_tag <?= $tag ?>">
+            <input type="checkbox" name="tags[]" value="<?= $tag ?>"
+                <?= isset($selectedTags) && in_array($tag, $selectedTags) ? 'checked' : '' ?>>
+            <span><?= ucfirst($tag) ?></span>
         </div>
-    </form>
- </div>
+    <?php endforeach; ?>
+
+    <button type="submit" class="c_filter_tags">Filter</button>
+</form>
