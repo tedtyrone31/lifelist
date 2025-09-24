@@ -6,9 +6,13 @@ class Todo extends Model{
     public $userId;
     public $todoTitle;
     public $tag;
+    public $todoDescription;
+    public $dueDate;
+    public $dueTime;
+    public $alarmStatus;
+    public $alarmSound;
     public $created_at;
     public $status;
-    public $alarm_status;
 
     // Save new todo on object state
     public function save() {
@@ -26,24 +30,58 @@ class Todo extends Model{
         return false; // failed
     }
 
+        // UPDATE METHOD
+    public function updateTodo($todoId) {
+        $title         = $this->db->conn->real_escape_string($this->todoTitle);
+        $tag           = $this->db->conn->real_escape_string($this->tag);
+        $todoDescription   = $this->db->conn->real_escape_string($this->todoDescription);
+        $dueDate       = $this->db->conn->real_escape_string($this->dueDate);
+        $dueTime       = $this->db->conn->real_escape_string($this->dueTime);
+        $alarmStatus   = $this->db->conn->real_escape_string($this->alarmStatus);
+        $alarmSound    = $this->db->conn->real_escape_string($this->alarmSound);
+
+        $sql = "UPDATE todos 
+                SET todo_title     = '{$title}', 
+                    tag            = '{$tag}', 
+                    todo_description = '{$todoDescription}',
+                    due_date       = '{$dueDate}',
+                    due_time       = '{$dueTime}',
+                    alarm_status   = '{$alarmStatus}',
+                    alarm_sound    = '{$alarmSound}',
+                    created_at     = NOW()
+                WHERE todo_id = '{$todoId}' 
+                AND user_id = '{$this->userId}' 
+                LIMIT 1";
+
+        if ($this->db->conn->query($sql)) {
+            return true; // success
+        }
+        return false; // failed
+    }
+
+
     // Static finder method
     public static function find($todo_id) {
         $db = (new self())->db->conn; // create instance just to access db
 
         $id = (int) $todo_id; // sanitize
 
-        $sql = "SELECT * FROM todos WHERE todo_id = {$todo_id} LIMIT 1";
+        $sql = "SELECT * FROM todos WHERE todo_id = {$todo_id} ORDER BY created_at DESC LIMIT 1";
         $result = $db->query($sql);
 
         if ($result && $row = $result->fetch_assoc()) {
             $todo = new self();
             $todo->todoId    = $row['todo_id'];
             $todo->userId    = $row['user_id'];
-            $todo->todoTitle      = $row['todo_title'];
+            $todo->todoTitle   = $row['todo_title'];
+            $todo->todoDescription   = $row['todo_description'];
             $todo->tag        = $row['tag'];
-            $todo->created_at = $row['created_at'];
+            $todo->dueDate        = $row['due_date'];
+            $todo->dueTime        = $row['due_time'];
+            // $todo->created_at = $row['created_at'];
             $todo->status = $row['status'];
-            $todo->alarm_status = $row['alarm_status'];
+            $todo->alarmStatus = $row['alarm_status'];
+            $todo->alarmSound = $row['alarm_sound'];
             return $todo;
         }
 
@@ -62,9 +100,9 @@ class Todo extends Model{
         if ($result) {
             while ($row = $result->fetch_assoc()) {
                 $todo = new self();
-                $todo->todoId         = $row['todo_id'];
-                $todo->userId    = $row['user_id'];
-                $todo->todoTitle      = $row['todo_title'];
+                $todo->todoId = $row['todo_id'];
+                $todo->userId = $row['user_id'];
+                $todo->todoTitle = $row['todo_title'];
                 $todo->tag        = $row['tag'];
                 $todo->created_at = $row['created_at'];
                 $todos[] = $todo;

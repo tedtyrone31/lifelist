@@ -2,6 +2,8 @@
 <?php
 $completeStatus = false;
 if (!empty($specificTodo)): 
+    echo $specificTodo->tag;
+    echo $specificTodo->todoDescription;
 ?>
     <div id="editModal" class="modal show">
         <div class="modal-content">
@@ -10,7 +12,7 @@ if (!empty($specificTodo)):
                 <a href="<?= BASE_URL ?>todo"> &times;</a>
             </span>
             <h2>
-                Edit To-Do 
+                Edit To-Do
                 &nbsp;&nbsp;&nbsp;
                 <span class="c_tag <?= $specificTodo->tag; ?>">
                     <?= ucfirst($specificTodo->tag); ?>
@@ -21,14 +23,12 @@ if (!empty($specificTodo)):
                 </span>
             </h2>
             
-            <form id="editForm" method="POST" action="../public/index.php?action=update_task&type=todo">
-                <input type="hidden" name="task_id" id="edit_task_id" value="<?= $specificTodo->todoId; ?>">
-                
+            <form id="editForm" method="POST" action="<?= BASE_URL; ?>todo/updateTodo/<?= $specificTodo->todoId;  ?>">
                 <br>
                 <div>
                     <label for="edit_task_title">Title:</label>
                     <input class="u_wd100 c_todo_ttl" type="text" 
-                           name="task_title" id="edit_task_title" 
+                           name="todo_title" id="edit_task_title" 
                            value="<?= htmlspecialchars($specificTodo->todoTitle); ?>" 
                            <?= $completeStatus ? "disabled" : "" ?>>
                 </div>
@@ -37,7 +37,7 @@ if (!empty($specificTodo)):
                 <div>
                     <label for="">Description:</label>
                     <input class="u_wd100" type="text" 
-                           name="task_description"  
+                           name="todo_description"  
                            value="<?= htmlspecialchars($specificTodo->todoDescription ?? ''); ?>" 
                            <?= $completeStatus ? "disabled" : "" ?>>
                 </div>
@@ -57,7 +57,7 @@ if (!empty($specificTodo)):
                 <div>
                     <label for="">Due Date:</label>
                     <input name="due_date" type="date" style="width: 28%;" 
-                           value="<?= $specificTodo->due_date ?? ''; ?>" 
+                           value="<?= $specificTodo->dueDate; ?>" 
                            <?= $completeStatus ? "disabled" : "" ?>>
                 </div>
                 
@@ -65,7 +65,7 @@ if (!empty($specificTodo)):
                 <div>
                     <label for="">Time:</label>
                     <input name="due_time" type="time" style="width: 24%;" 
-                           value="<?= $specificTodo->due_time ?? ''; ?>" 
+                           value="<?= $specificTodo->dueTime ?? ''; ?>" 
                            <?= $completeStatus ? "disabled" : "" ?>>
                 </div>
                 
@@ -73,8 +73,8 @@ if (!empty($specificTodo)):
                 <div>
                     <label for="edit_task_status">Alarm:</label>
                     <select name="alarm_status" id="edit_task_status" <?= $completeStatus ? "disabled" : "" ?>>
-                        <option value="on" <?= ($specificTodo->alarm_status === 'on') ? 'selected' : ''; ?>>On</option>
-                        <option value="off" <?= ($specificTodo->alarm_status === 'off') ? 'selected' : ''; ?>>Off</option>
+                        <option value="on" <?= ($specificTodo->alarmStatus === 'on') ? 'selected' : ''; ?>>On</option>
+                        <option value="off" <?= ($specificTodo->alarmStatus === 'off') ? 'selected' : ''; ?>>Off</option>
                     </select>
                 </div>
                 
