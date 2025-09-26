@@ -35,6 +35,7 @@ class TobuyController extends Controller{
         $data = [
             'title'            => 'To-Buy',
             'activeMenu'       => 'tobuy',
+            'bodyId'   => 'tobuy',
             'itemPending'     => $itemPending,
             'itemCompleted'   => $itemCompleted,
             'specificItem'     => $specificItem,

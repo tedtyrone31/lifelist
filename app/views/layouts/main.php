@@ -27,7 +27,8 @@
 	<script src="js/custom.js"></script>
 </head>
 
-<body id="top" class="drawer drawer--right">
+<body <?= isset($bodyId) ? 'id="' . htmlspecialchars($bodyId) . '"' : '' ?>
+  class="drawer drawer--right">
   <div class="l_bg">
 		<div class="l_container l_wrap clearfix">
 			<button type="button" class="drawer-toggle drawer-hamburger">

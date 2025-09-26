@@ -7,7 +7,8 @@ $messages = [
     'todoUpdateMessage' => 'success',
     'statusUpdateMessage' => 'success',
     'updateTodoStatusMessage' => 'success',
-    'errorMessage' => 'success'
+    'errorMessage' => 'success',
+    'filterMessage' => 'info', // 👈 add this for filter flash
 ];
 
 foreach ($messages as $key => $type):

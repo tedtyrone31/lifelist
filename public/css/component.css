@@ -1365,3 +1365,43 @@ select option {
   padding-bottom: 5px;
   color: #fff;
 }
+
+#cart .message.info-message {
+  opacity: 1;
+  text-align: right;
+}
+
+#cart .message {
+  margin-top: unset!important;
+}
+
+.toggle {
+  width: 28px;
+  height: 28px;
+}
+
+.cart-item h4 {
+  background-color: #b44642;
+  font-size: 1.3rem;
+}
+
+
+.c_cart_table,
+.c_cart_table th,
+.c_cart_table tr,
+.c_cart_table td{
+  border: none;
+}
+
+.c_cart_table tbody td {
+  border-bottom: 1px solid #ebeae7;
+  padding: 5px;
+  font-size: 1.4rem;
+}
+.c_cart_table thead th {
+  font-size: 1.3rem;
+}
+
+.c_cart_table tbody tr:first-of-type {
+  border-top: 1px solid #ebeae7;
+}

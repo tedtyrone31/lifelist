@@ -1,12 +1,11 @@
-<!-- <h2>🛒 Cart History</h2> -->
-
 <?php if (!empty($carts)): ?>
     <?php foreach ($carts as $cart): ?>
         <div class="cart-item">
             <h4>
                 <button class="toggle">+</button>
-                <?= date('F j, Y l g:ia', strtotime($cart['cart_date'])) ?>
-                ₱<?= number_format($cart['cart_total'], 2) ?>
+                <!-- <?= date('F j, Y l g:ia', strtotime($cart['cart_date'])) ?> -->
+                <span><?= date('F j, Y', strtotime($cart['cart_date'])) ?></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>₱<?= number_format($cart['cart_total'], 2) ?></span>
             </h4>
 
             <div class="cart-details" hidden>
@@ -15,12 +14,12 @@
                         <tr>
                             <th>
                                 <span class="full">Items</span>
-                                <span class="short">Itm</span>
+                                <span class="short">Item</span>
                             </th>
-                            <th>
+                            <!-- <th>
                                  <span class="full">Tag</span>
-                                <span class="short">tag</span>
-                            </th>
+                                <span class="short">Tag</span>
+                            </th> -->
                             <th>
                                 <span class="full">Description</span>
                                 <span class="short">Desc</span>
@@ -42,8 +41,8 @@
                     <tbody>
                         <?php foreach ($cart['items'] as $item): ?>
                             <tr>
-                                <td><?= htmlspecialchars($item['item_name']) ?></td>
-                                <td>  <?= isset($tags[$item['tag']]) ? htmlspecialchars($tags[$item['tag']]) : htmlspecialchars($item['tag']) ?></td>
+                                <td><?= htmlspecialchars(ucfirst($item['item_name'])) ?></td>
+                                <!-- <td>  <?= isset($tags[$item['tag']]) ? htmlspecialchars($tags[$item['tag']]) : htmlspecialchars($item['tag']) ?></td> -->
                                 <td><?= htmlspecialchars($item['description']) ?></td>
                                 <td><?= (int) $item['quantity'] ?></td>
                                 <td><?= number_format($item['price'], 2) ?></td>

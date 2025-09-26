@@ -19,8 +19,8 @@ class Cart extends Model {
         if (!$item) return false;
 
         // Step 2: find or create today's cart
-        // $today = date('Y-m-d');
-        $today = "2025-10-4";
+        $today = date('Y-m-d');
+        // $today = "2025-10-6";
         $sql = "SELECT cart_id FROM tobuy_carts 
                 WHERE user_id = {$userId} 
                   AND DATE(cart_date) = '{$today}' 
@@ -88,7 +88,7 @@ class Cart extends Model {
                 JOIN tobuy_carts c ON cci.cart_id = c.cart_id
                 WHERE c.user_id = {$userId}
                 {$whereTags}
-                ORDER BY c.cart_date DESC, cci.item_id ASC";
+                ORDER BY c.cart_date DESC, cci.item_id ASC LIMIT 10";
 
         $result = $this->db->conn->query($sql);
 
