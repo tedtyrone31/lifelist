@@ -454,4 +454,26 @@ miscellaneous
 		font-size: 1.4em;
 		padding: 0.1em 1em;
 	}
+	
+	.c_task_submit_input ,
+	.c-tag-options,
+	.c_task_input_main_container input {
+		height: unset!important;
+		/* padding: 0.3em; */
+		font-size: 0.8em;
+		padding: 0.3em 0.9em;
+	}
+	
+	.c-tag-options,
+	.c_task_submit_input {
+		text-align: center;
+	}
+
+	.c_filter_tags {
+		padding: 0.2em 0.9em;
+	}
+
+	.l_side_contents, .l_main_contents {
+	opacity:1!important;
+}
 }

@@ -821,7 +821,7 @@ a[href$=".pdf"].c_anchor_icon {
 
 .modal-content .c_tag{
   font-size: 1.2rem;
-  width: 30%;
+  /* width: 30%; */
   text-align: center;
   border-radius: 5px;
 }
@@ -838,21 +838,6 @@ a[href$=".pdf"].c_anchor_icon {
   /* margin-left: 8px; */
 
 }
-
-.tag-box.default {background-color: #607D8B;}
-.tag-box.personal {background-color: #4CAF50;}
-.tag-box.work {background-color: #2196F3;}
-.tag-box.school {background-color: #9C27B0;}
-.tag-box.groceries {background-color: #4CAF50;}
-.tag-box.household {background-color: #f99a24;}
-.tag-box.clothing {background-color: #2196F3;}
-.tag-box.electronics {background-color: #9C27B0;}
-.tag-box.wellness {background-color: #E91E63;}
-.tag-box.gifts {background-color: #FF5722;}
-.tag-box.tools {background-color: #795548;}
-.tag-box.pets {background-color: #03A9F4;}
-.tag-box.split {background-color: #008080;}
-
 
 
 /* the popup box */
@@ -883,6 +868,7 @@ a[href$=".pdf"].c_anchor_icon {
   border: none;
   font-weight:lighter;
   letter-spacing: 2px;
+  cursor: pointer;
   /* height: 25px; */
   /* margin-left: 10px; */
 }
@@ -904,35 +890,54 @@ a[href$=".pdf"].c_anchor_icon {
 .c_tag.split { background-color: #008080; color: #fff; }
 
 
+.tag-box.default {background-color: #607D8B;}
+.tag-box.personal {background-color: #4CAF50;}
+.tag-box.work {background-color: #2196F3;}
+.tag-box.school {background-color: #9C27B0;}
+.tag-box.groceries {background-color: #4CAF50;}
+.tag-box.household {background-color: #f99a24;}
+.tag-box.clothing {background-color: #2196F3;}
+.tag-box.electronics {background-color: #9C27B0;}
+.tag-box.wellness {background-color: #E91E63;}
+.tag-box.gifts {background-color: #FF5722;}
+.tag-box.tools {background-color: #795548;}
+.tag-box.pets {background-color: #FF69B4;}
+.tag-box.split {background-color: #008080;}
+
+
 .c_task_input_main_container {
     display: flex;
     /* width: 93%; */
-    position: relative;
-    /* flex-wrap: wrap; */
-    margin-top: 20px;
+    /* position: relative; */
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 10px 10px;
 }
 .c_task_input {
     background-color: #3C3D37;
-    width: 100%;
+    width: 50%;
     /* padding-left: 220px; */
     padding-left: 20px;
-    padding-right: 245px;
+    /* padding-right: 245px; */
+    padding-right: 20px;
 }
 
 .c-tag-options {
-    position: absolute;
+    /* position: absolute; */
     right: 100px;
     height: 30px;
     /* width: 100px; */
     text-align: left;
     /* padding-left: 30px; */
     padding: 0 15px;
-    margin-right: 20px;
+    /* margin-right: 20px; */
     border-radius: 20px;
 }
 .c_task_submit_input_container {
-    position: absolute;
-    right: 0;
+    /* position: absolute;
+    right: 0; */
+    /* position: absolute;
+    right: 0; */
 }
 
 .c_task_input_main_container input {
@@ -956,7 +961,6 @@ a[href$=".pdf"].c_anchor_icon {
     font-size: 1.4rem;
     margin-top: 3px;
     width: 100%;
-    /* padding: 5px 10px; */
     padding: 5px 0px;
     padding-left: 10px;
     color: #fff;
@@ -984,7 +988,6 @@ a[href$=".pdf"].c_anchor_icon {
 .error-message {
     opacity: 1; /* stays visible */
 }
-
 
 .message {
     padding: 10px 15px;
@@ -1242,8 +1245,9 @@ select option {
 .status-completed {
     color: #28a745;
     margin-left: 15px;
+    margin-bottom: 10px;
     font-family: sans-serif;
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: bold;
     /* text-align: center; */
 }
@@ -1337,10 +1341,27 @@ select option {
     font-size: 16px;
     font-weight: bold;
     background-color: #A84033;
+    cursor: pointer;
 }
 
 .c_completed_count {
   background-color: #2196F3;
   padding: 2px 8px;
+  color: #fff;
+  font-size: 1.7rem;
+}
+
+.c_cart_table {
+  margin-top: 10px;
+}
+
+.c_cart_table th:not(:first-child),
+.c_cart_table td:not(:first-child) {
+  text-align: center;
+}
+
+.c_cart_table th,
+.c_cart_table td{
+  padding-bottom: 5px;
   color: #fff;
 }

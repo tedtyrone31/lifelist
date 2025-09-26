@@ -1,0 +1,14 @@
+/* Default (desktop) */
+th .short {
+  display: none;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  th .full {
+    display: none;
+  }
+  th .short {
+    display: inline;
+  }
+}

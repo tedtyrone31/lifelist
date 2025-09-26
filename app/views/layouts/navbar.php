@@ -11,6 +11,7 @@
 			<li class="<?= ($activeMenu=="dashboard")?"active":"" ?>"><a href="<?= BASE_URL ?>dashboard">Dashboard</a></li>
 			<li class="<?= ($activeMenu=="todo")?"active":"" ?>"><a href="<?= BASE_URL ?>todo">Todo</a></li>
 			<li class="<?= ($activeMenu=="tobuy")?"active":"" ?>"><a href="<?= BASE_URL ?>tobuy">To-Buy</a></li>
+			<li class="<?= ($activeMenu=="cart")?"active":"" ?>"><a href="<?= BASE_URL ?>cart">Cart History</a></li>
 	
 			
 		 <?php if ($activeMenu == "todo"): ?>
@@ -31,22 +32,22 @@
 		<?php endif; ?>
 
 		<br>
-		<?php if ($activeMenu == "tobuy"): ?>
-            <?php if (!empty($todosCompleted)): ?>
+		 <?php if ($activeMenu == "tobuy"): ?>
+            <?php if (!empty($itemCompleted)): ?>
 				<br>
 			<hr style="margin:0 20px;">
 			<br>
-				<p class="status-completed">Completed</p>
-            <?php foreach ($todosCompleted as $todo): ?>
+				<p class="status-completed">Completed <span class="c_completed_count"><?= $completedCount; ?></span></p>
+            <?php foreach ($itemCompleted as $tobuy): ?>
                 <li class="c-completed-nav-list-item">
-                	<div style="margin-left: 15px;position:relative;">  
-						<!-- <a class="c-completed-title-link <?php echo $todo->todoTitle; ?>" href="../public/index.php?page=todo&task_id=<?= $task['task_id'] ?>&task_status=<?= $task['task_status'] ?><?= !empty($_GET['tags']) ? '&' . http_build_query(['tags' => $_GET['tags']]) : '' ?>"><?= htmlspecialchars(substr($task['task_title'],0,30)) ?></a> -->
-						<a class="c-completed-title-link"><?php echo $todo->todoTitle; ?><span class="nav-tag-box tag-box <?php echo $todo->tag; ?>"></span></a>  
+                	<div style="margin-left: 15px;">  
+						<a class="c-completed-title-link" href="<?= BASE_URL ?>tobuy/<?= $tobuy->tobuyId;?>/completed"><?php echo $tobuy->tobuyItem; ?><span class="nav-tag-box tag-box <?= $tobuy->tag;?>"></span></a>
                     </div>
                 </li>
             <?php endforeach; ?>
             <?php endif; ?>
 			</ul>
 		<?php endif; ?>
+		
 		<br>
 </nav>

@@ -94,7 +94,7 @@ class Todo extends Model{
     public static function find($todo_id) {
         $db = (new self())->db->conn; // create instance just to access db
 
-        $id = (int) $todo_id; // sanitize
+        $todo_id = (int) $todo_id; // sanitize
 
         $sql = "SELECT * FROM todos WHERE todo_id = {$todo_id} ORDER BY created_at DESC LIMIT 1";
         $result = $db->query($sql);

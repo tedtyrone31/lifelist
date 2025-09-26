@@ -16,6 +16,7 @@
 	<link href="css/layout.css" rel="stylesheet" media="all">
 	<link href="css/component.css" rel="stylesheet" media="all">
 	<link href="css/style.css" rel="stylesheet" media="all">
+	<link href="css/custom.css" rel="stylesheet" media="all">
 	<link href="css/style_sp.css" rel="stylesheet" type="text/css" media="all">
 	<link href="css/drawer.css" rel="stylesheet" type="text/css" media="all">
 	<link href="css/print.css" rel="stylesheet" media="print">

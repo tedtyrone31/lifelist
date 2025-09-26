@@ -7,9 +7,7 @@
      <!-- Filters -->
         <?php include "_filters.php"; ?>
         <!-- Flash Messages -->
-        <?php 
-        include "_messages.php"; 
-        ?>
+        <?php include __DIR__ . '/../partials/_messages.php'; ?>
         <!-- Add Task Form -->
         <?php 
         include "_todoForm.php"; 

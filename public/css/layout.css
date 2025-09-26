@@ -96,6 +96,7 @@ When using modifier put the prefix "has_" and write it under each layout.
 	color: #fff;
 	border: 1px solid #fff;
 	min-height: 90%;
+	opacity:0.9
 }
 
 /*----------------------------------------------
@@ -365,8 +366,8 @@ has_column_wrap_fill50 : 左右25pxづつ埋める
 
 
 .l_main_content_wrap {
-	width: 90%;
-	margin: 20px auto;
+	width: 100%;
+	margin: 10px auto;
 }
 
 .l_main_ttl_container {

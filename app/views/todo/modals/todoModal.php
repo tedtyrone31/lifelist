@@ -88,12 +88,14 @@ if (!empty($specificTodo)):
                     <?php endif; ?>
                 </div>
                 
-                <br><br>
+                <br>
+                 <?php if (!$completeStatus): ?>
                 <button type="submit" 
                         class="c_save_changes_btn <?= $completeStatus ? "complete-status" : "" ?>"  
                         <?= $completeStatus ? "disabled" : "" ?>>
                     Save changes
                 </button>
+                <?php endif; ?>
              </form>
                 <!-- Delete -->
                  <?php if ($completeStatus): ?>

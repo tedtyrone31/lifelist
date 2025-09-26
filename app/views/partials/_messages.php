@@ -1,6 +1,7 @@
 <?php
 $messages = [
     'insertTodoMessage' => 'success',
+    'insertTobuyMessage' => 'success',
     'deleteMessage' => 'success',
     'errorEmptyMessage' => 'error',
     'todoUpdateMessage' => 'success',
