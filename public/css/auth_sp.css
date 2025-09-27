@@ -1,0 +1,43 @@
+/* Mobile / small screens: stack top-to-bottom */
+@media (max-width: 768px) {
+  .log-in-wrapper {
+    flex-direction: column;
+    height: auto; /* allow forms to expand naturally */
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .form {
+    width: 90%;      /* full width on mobile */
+    margin-bottom: 20px;
+  }
+
+  /* Panel covers top instead of right */
+  .auth-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 90%;
+    height: auto;
+    margin-bottom: 20px;
+    transform: translateY(0);
+    padding: 0.8rem;
+    border-radius: 10px;
+  }
+
+  .auth-wrapper {
+    height: 550px;
+    margin: 20px;
+  }
+
+  /* Slide down/up effect on toggle */
+  .log-in-wrapper.active .auth-panel {
+    transform: translateY(0);
+  }
+
+  /* Forms toggle visibility */
+  .register-form { display: none; }
+  .log-in-wrapper.active .register-form { display: flex; }
+  .log-in-wrapper.active .login-form { display: none; }
+}

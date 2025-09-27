@@ -7,19 +7,25 @@
   <title><?= $title ?? 'LifeLists — Auth' ?></title>
 
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<link rel="shortcut icon" href="common/images/favicon.ico">
-	<link href="../public/css/login_register.css" rel="stylesheet" media="all">
-	<link href="../public/css/base.css" rel="stylesheet" media="all">
+	<link rel="shortcut icon" href="common/images/favicon.ico"><link href="../public/css/base.css" rel="stylesheet" media="all">
 	<link href="../public/css/layout.css" rel="stylesheet" media="all">
 	<link href="../public/css/component.css" rel="stylesheet" media="all">
 	<link href="../public/css/custom.css" rel="stylesheet" media="all">
 	<link href="../public/css/auth.css" rel="stylesheet" media="all">
+	<link href="../public/css/auth_sp.css" rel="stylesheet" media="all">
 	<link href="../public/css/style.css" rel="stylesheet" media="all">
+	<link href="../public/css/style_sp.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../public/css/print.css" rel="stylesheet" media="print">
+
+	<script src="../public/js/jquery-2.1.3.min.js"></script>
+	<script src="../public/js/iscroll.js"></script> 
+	<script src="../public/js/drawer.js"></script> 
+	<script src="../public/js/auth.js"></script> 
+	<script src="../public/js/custom.js"></script>
 </head>
     <body class="auth-layout">
-      <div class="auth-wrapper">
-        <?= $content ?>    <!-- this is the view (app/views/auth/index.php) -->
-      </div>
+			<div class="auth-wrapper">
+				<?= $content ?>    <!-- this is the view (app/views/auth/index.php) -->
+			</div>
     </body>
 </html>

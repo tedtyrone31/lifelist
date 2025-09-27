@@ -16,7 +16,8 @@ class AuthController extends Controller {
         }
 
         $formType = $_POST['form_type'] ?? '';
-        $errors = [];
+        $loginErrors = [];
+        $registerErrors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // if (isset($_POST['register'])) {
@@ -30,24 +31,24 @@ class AuthController extends Controller {
 
                 // Validation
                 if (empty($name) || empty($email) || empty($password)) {
-                    $errors[] = "All fields are required.";
+                    $registerErrors[] = "All fields are required.";
                 }
 
                 if ($password !== $confirm) {
-                    $errors[] = "Passwords do not match.";
+                    $registerErrors[] = "Passwords do not match.";
                 }
 
                 // Check database for existing email
                 if ($this->userModel->emailExists($email)) {
-                    $errors[] = "Email already exists.";
+                    $registerErrors[] = "Email already exists.";
                 }
 
                 // Check database for existing username
                 if ($this->userModel->usernameExists($username)) {
-                    $errors[] = "Username already exists.";
+                    $registerErrors[] = "Username already exists.";
                 }
 
-                if (empty($errors)) {
+                if (empty($registerErrors)) {
                     $userId = $this->userModel->register($username, $name, $email, $password);
                     if ($userId) {
 
@@ -56,7 +57,7 @@ class AuthController extends Controller {
                         header('Location: ' . BASE_URL . 'auth');
                         exit;
                     } else {
-                        $errors[] = "Registration failed. Please contact Administrator.";
+                        $registerErrors[] = "Registration failed. Please contact Administrator.";
                     }
                 }
 
@@ -67,10 +68,10 @@ class AuthController extends Controller {
                 $password = $_POST['password'];
 
                 if (empty($username) || empty($password)) {
-                    $errors[] = "Username and password are required.";
+                    $loginErrors[] = "Username and password are required.";
                 }
 
-                if (empty($errors)) {
+                if (empty($loginErrors)) {
                     $user = $this->userModel->verifyCredentials($username, $password);
                     if ($user) {
                         $_SESSION['user_id'] = $user['id'];
@@ -79,18 +80,23 @@ class AuthController extends Controller {
                         header('Location: ' . BASE_URL . 'dashboard');
                         exit;
                     } else {
-                        $errors[] = "Invalid email or password.";
+                        $loginErrors[] = "Invalid email or password.";
                     }
                 }
             }
         }
 
+        // Pull flash message (single string, not array)
+        $successMessage = $_SESSION['success_message'] ?? null;
+        unset($_SESSION['success_message']); // clear it after reading
+
         // Pass data to view
         $data = [
             'title' => 'Login / Register',
-            'errors' => $errors
-            // 'username' => isset($username) ? $username : '',
-            // 'email' => isset($email) ? $email : ''
+            'loginErrors' => $loginErrors,
+            'registerErrors' => $registerErrors,
+            'successMessage' => $successMessage, 
+            'showRegister'   => !empty($registerErrors) || !empty($successMessage), // 👈 flag
         ];
 
         $this->view('auth/index', $data, 'auth');
